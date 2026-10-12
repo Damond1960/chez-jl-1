@@ -8,9 +8,9 @@
 </head>
 <body class="page-acces-astuces">
 
-  <!-- Musique d'ambiance IA douce (Oiseaux & Nature) -->
-  <audio autoplay loop id="audio-ambiance">
-    <source src="https://mixkit.co" type="audio/wav">
+  <!-- Musique d'ambiance de secours (libre de droits) -->
+  <audio loop id="audio-ambiance">
+    <source src="https://soundhelix.com" type="audio/mp3">
     Votre navigateur ne supporte pas l'élément audio.
   </audio>
 
@@ -84,10 +84,19 @@
 
   <script>
     // Script simple pour couper la musique
-    function toggleAudio() {
+        function toggleAudio() {
       var audio = document.getElementById('audio-ambiance');
-      if (audio.paused) { audio.play(); } else { audio.pause(); }
+      var bouton = event.target; // Cible le bouton cliqué
+      
+      if (audio.paused) { 
+        audio.play(); 
+        bouton.textContent = "🎵 Couper la musique";
+      } else { 
+        audio.pause(); 
+        bouton.textContent = "🎵 Activer la musique";
+      }
     }
+
     
     // Changement de langue fictif pour la structure
     function changerLangue(lang) {
