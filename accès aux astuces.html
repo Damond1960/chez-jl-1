@@ -23,7 +23,7 @@
       </div>
     </div>
 
-    <!-- Sélecteur de Langue & Retour -->
+    <!-- Sélecteur de Langue & Retour (Ligne 29 à 39) -->
     <div class="bandeau-menu" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px;">
       <a href="index.html" class="btn" style="min-width: auto; padding: 5px 15px;">⬅ Accueil</a>
       
@@ -79,14 +79,14 @@
 
   <footer>
     © chez-JL – Tous droits réservés
-    <button onclick="toggleAudio()" style="background: none; border: none; cursor: pointer; margin-left: 15px;">🎵 Couper/Activer la musique</button>
+    <button id="btn-musique" onclick="toggleAudio()" style="background: none; border: none; cursor: pointer; margin-left: 15px; color: inherit; font-family: inherit;">🎵 Activer la musique</button>
   </footer>
 
   <script>
-    // Script simple pour couper la musique
-        function toggleAudio() {
+    // Script corrigé pour l'interrupteur Play / Pause (Lignes 85 à 96)
+    function toggleAudio() {
       var audio = document.getElementById('audio-ambiance');
-      var bouton = event.target; // Cible le bouton cliqué
+      var bouton = document.getElementById('btn-musique');
       
       if (audio.paused) { 
         audio.play(); 
@@ -96,7 +96,6 @@
         bouton.textContent = "🎵 Activer la musique";
       }
     }
-
     
     // Changement de langue fictif pour la structure
     function changerLangue(lang) {
