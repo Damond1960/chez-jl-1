@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Accès aux Astuces – chez-JL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-acces-astuces">
+
+  <!-- Musique d'ambiance IA douce (Oiseaux & Nature) -->
+  <audio autoplay loop id="audio-ambiance">
+    <source src="https://mixkit.co" type="audio/wav">
+    Votre navigateur ne supporte pas l'élément audio.
+  </audio>
+
+  <header class="header-accueil">
+    <div class="bandeau-titre">
+      <img src="images/figurine-mascotte.png" alt="Mascotte chez-JL" class="figurine">
+      <div class="header-texte">
+        <h1>chez-JL</h1>
+        <p>Espace Consultation des Astuces</p>
+      </div>
+    </div>
+
+    <!-- Sélecteur de Langue & Retour -->
+    <div class="bandeau-menu" style="display: flex; justify-content: space-between; align-items: center; padding: 10px 20px;">
+      <a href="index.html" class="btn" style="min-width: auto; padding: 5px 15px;">⬅ Accueil</a>
+      
+      <div class="selecteur-langue">
+        <label for="langue" style="color: white; font-weight: bold; margin-right: 8px;">🌐 Langue :</label>
+        <select id="langue" onchange="changerLangue(this.value)" style="padding: 5px; border-radius: 5px;">
+          <option value="fr">Français</option>
+          <option value="en">English</option>
+          <option value="es">Español</option>
+          <option value="de">Deutsch</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Nomenclature / Filtres de recherche -->
+    <section class="section-filtres">
+      <h2>🔍 Quelle astuce vous intéresse ?</h2>
+      <form id="form-filtres">
+        
+        <!-- Catégories d'astuces -->
+        <h3>Par Catégorie :</h3>
+        <div class="group-filtres">
+          <label><input type="checkbox" name="categorie" value="bricolage"> Bricolage</label>
+          <label><input type="checkbox" name="categorie" value="mecanique"> Mécanique</label>
+          <label><input type="checkbox" name="categorie" value="maison"> Maison & Quotidien</label>
+          <label><input type="checkbox" name="categorie" value="electricite"> Électricité</label>
+          <label><input type="checkbox" name="categorie" value="jardinage"> Jardin</label>
+        </div>
+
+        <!-- Types de contenus demandés -->
+        <h3>Par type de média :</h3>
+        <div class="group-filtres">
+          <label><input type="checkbox" name="media" value="texte"> 📝 Astuces Textes</label>
+          <label><input type="checkbox" name="media" value="image"> 🖼️ Images envoyées</label>
+          <label><input type="checkbox" name="media" value="video"> 🎬 Vidéos</label>
+          <label><input type="checkbox" name="media" value="message"> 💬 Messages des internautes</label>
+        </div>
+
+        <button type="button" class="btn" onclick="filtrerAstuces()" style="margin-top: 20px; width: 100%;">Rechercher les contributions</button>
+      </form>
+    </section>
+
+    <!-- Zone d'affichage des résultats simulés -->
+    <section class="zone-resultats" style="margin-top: 30px;">
+      <h2>📋 Dernières contributions reçues</h2>
+      <div id="liste-astuces-flux">
+        <p style="text-align: center; color: #666;">Sélectionnez vos critères ci-dessus pour charger le flux des internautes.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © chez-JL – Tous droits réservés
+    <button onclick="toggleAudio()" style="background: none; border: none; cursor: pointer; margin-left: 15px;">🎵 Couper/Activer la musique</button>
+  </footer>
+
+  <script>
+    // Script simple pour couper la musique
+    function toggleAudio() {
+      var audio = document.getElementById('audio-ambiance');
+      if (audio.paused) { audio.play(); } else { audio.pause(); }
+    }
+    
+    // Changement de langue fictif pour la structure
+    function changerLangue(lang) {
+      alert("Changement de langue vers : " + lang.toUpperCase());
+    }
+
+    // Gestion de la nomenclature
+    function filtrerAstuces() {
+      var conteneur = document.getElementById('liste-astuces-flux');
+      conteneur.innerHTML = `
+        <div style="background: #f9f9f9; padding: 15px; border-left: 5px solid #6f6f6f; margin-bottom: 15px; border-radius: 4px;">
+          <strong>Jean-Pierre (Mécanique - Vidéo) :</strong> "Vidange facile sur tondeuse sans pompe." <br>
+          <a href="#" style="color: blue; text-decoration: underline;">Voir la vidéo YouTube</a>
+        </div>
+        <div style="background: #f9f9f9; padding: 15px; border-left: 5px solid #c9a36a; margin-bottom: 15px; border-radius: 4px;">
+          <strong>Marie83 (Bricolage - Image) :</strong> "Restauration d'une table basse en palette." <br>
+          <a href="#" style="color: blue; text-decoration: underline;">Voir l'image jointe</a>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
